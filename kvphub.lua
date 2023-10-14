@@ -43,4 +43,24 @@ Tab:AddTextbox({
     end
 })
 
+Tab:AddToggle({
+    Name = "Infinity Jump",
+    Default = false,
+    Callback = function(Value)
+        local player = game.Players.LocalPlayer
+        local humanoid = player.Character:FindFirstChild("Humanoid")
+        if humanoid then
+            if Value then
+                humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+                humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, true)
+                humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics, true)
+            else
+                humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
+                humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, false)
+                humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics, false)
+            end
+        end
+    end
+})
+
 OrionLib:Init()

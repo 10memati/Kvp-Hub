@@ -17,13 +17,8 @@ local speedTextbox = Tab:AddTextbox({
     Default = "100",
     TextDisappear = false,
     Callback = function(Value)
-        local newSpeed = tonumber(Value)
-        if newSpeed then
-            newSpeed = math.clamp(newSpeed, 0, 300)
-            humanoid.WalkSpeed = newSpeed
-            speedTextbox:Set(tostring(newSpeed)) -- Metin girişini güncelle
-        end
-    end
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+		end
 })
 
 local jumpPowerTextbox = Tab:AddTextbox({

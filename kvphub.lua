@@ -12,13 +12,13 @@ local Section = Tab:AddSection({
 	Name = "Player"
 })
 
-local speedTextbox = Tab:AddTextbox({
+Tab:AddTextbox({
     Name = "Hız",
     Default = "100",
     TextDisappear = false,
     Callback = function(Value)
-game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-		end
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(Value)
+end
 })
 
 local jumpPowerTextbox = Tab:AddTextbox({

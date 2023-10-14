@@ -25,38 +25,39 @@ local GameSection = GameTab:AddSection({
     Name = "Game"
 })
 
-GameTab:AddDropdown({
-    Name = "Open Block",
-    Default = nil,
-    Options = {"Lucky Block", "Super Block", "Diamond Block", "Rainbow Block", "Galaxy Block"},
+GameTab:AddButton({
+    Name = "Lucky Block",
     Callback = function(Value)
-        local blockActions = {
-            ["lucky block"] = function()
-                game:GetService("ReplicatedStorage"):WaitForChild("SpawnLuckyBlock"):FireServer()
-            },
-            ["super block"] = function()
-                game:GetService("ReplicatedStorage"):WaitForChild("SpawnSuperBlock"):FireServer()
-            },
-            ["diamond block"] = function()
-                game:GetService("ReplicatedStorage"):WaitForChild("SpawnDiamondBlock"):FireServer()
-            },
-            ["rainbow block"] = function()
-                game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
-            },
-            ["galaxy block"] = function()
-                game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
-            }
-        }
+	game:GetService("ReplicatedStorage"):WaitForChild("SpawnLuckyBlock"):FireServer()
+  end
+})
 
-        local block = Value:lower():gsub("^%s*(.-)%s*$", "%1")
-        local action = blockActions[block]
+GameTab:AddButton({
+    Name = "Super Block",
+    Callback = function(Value)
+	game:GetService("ReplicatedStorage"):WaitForChild("SpawnSuperBlock"):FireServer()
+  end
+})
 
-        if action then
-            action()
-        else
-            print("Invalid block selection")
-        end
-    end
+GameTab:AddButton({
+    Name = "Diamond Block",
+    Callback = function(Value)
+	game:GetService("ReplicatedStorage"):WaitForChild("SpawnDiamondBlock"):FireServer()
+  end
+})
+
+GameTab:AddButton({
+    Name = "Rainbow Block",
+    Callback = function(Value)
+	game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+  end
+})
+
+GameTab:AddButton({
+    Name = "Galaxy Block",
+    Callback = function(Value)
+	game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+  end
 })
 
 -- Player Sets

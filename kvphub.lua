@@ -27,6 +27,55 @@ local GameSection = GameTab:AddSection({
     Name = "Game"
 })
 
+local TeleportTab = Window:MakeTab({
+    Name = "Teleport",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local TeleportSection = TeleportTab:AddSection({
+    Name = "Teleport"
+})
+
+-- Teleport Sets
+  -- Teleport Player
+  local players = game:GetService("Players"):GetPlayers()
+local playerNames = {}
+
+for _, player in pairs(players) do
+    table.insert(playerNames, player.Name)
+  end
+  
+  Tab:AddDropdown({
+	Name = "Teleport To Player",
+	Default = nil,
+	Options = players,
+	Callback = function(Value)
+		local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+
+local hedefOyuncuAdi = Value
+
+local oyuncu = game.Players.LocalPlayer
+
+local hedefOyuncu = Players:FindFirstChild(hedefOyuncuAdi)
+
+if hedefOyuncu then
+    local hedefPozisyon = hedefOyuncu.Character.HumanoidRootPart.CFrame.p
+    oyuncu.Character:SetPrimaryPartCFrame(CFrame.new(hedefPozisyon))
+else
+          OrionLib:MakeNotification({
+              Name = "Error",
+              Content = "No such player was found.",
+              Image = "rbxassetid://4483345998",
+              Time = 5
+          })
+        end
+        
+	end
+})
+
+-- Game Sets
   -- Blocks
 GameTab:AddButton({
     Name = "Lucky Block",
@@ -66,10 +115,15 @@ GameTab:AddButton({
 GameTab:AddButton({
     Name = "Void Block",
     Callback = function(Value)
-    local miktar = 6
-for i = 1, miktar do
+    local rainbow = 2
+    local galaxy = 3
+        
+ for i = 1, galaxy do
 	game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
     end
+  for i = 1, rainbow do
+	game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+        end
  end
 })
 

@@ -59,7 +59,7 @@ GameTab:AddDropdown({
         end
     end
 })
-	
+
 -- Player Sets
   -- Speed
 Tab:AddTextbox({

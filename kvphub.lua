@@ -17,7 +17,7 @@ local GameTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local Section = luckyblock:AddSection({
+local Section = Window:AddSection({
 	Name = "Game"
 })
 

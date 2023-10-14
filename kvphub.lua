@@ -47,7 +47,13 @@ Tab:AddTextbox({
 
 local InfiniteJumpEnabled = false
 
--- in
+Tab:AddToggle({
+    Name = "Infinite Jump",
+    Default = false,
+    Callback = function(Value)
+        InfiniteJumpEnabled = Value
+    end
+})
 
 game:GetService("UserInputService").JumpRequest:Connect(function()
     if InfiniteJumpEnabled then
@@ -82,32 +88,21 @@ Tab:AddToggle({
     Name = "Noclip",
     Default = false,
     Callback = function(Value)
-        if Value then
-            noclip()
-        else
-            clip()
-        end
-    end
-})
-
-local function noclip()
-    Clip = false
-    local function Nocl()
-        if Clip == false and game.Players.LocalPlayer.Character ~= nil then
+	ToggleNoclip = Value
+        if ToggleNoclip then
             for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
                 if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                     v.CanCollide = false
                 end
             end
-        end
-        wait(0.21)
+        else
+            for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                if v:IsA('BasePart') and not v.CanCollide and v.Name ~= floatName then
+                    v.CanCollide = true
+                end
+            end
+			end
     end
-    Noclip = game:GetService('RunService').Stepped:Connect(Nocl)
-end
-
-local function clip()
-    if Noclip then Noclip:Disconnect() end
-    Clip = true
-end
+})
 
 OrionLib:Init()

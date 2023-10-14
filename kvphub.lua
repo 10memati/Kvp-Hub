@@ -46,7 +46,7 @@ for _, player in pairs(players) do
     table.insert(playerNames, player.Name)
   end
   
-  Tab:AddDropdown({
+  TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
 	Default = nil,
 	Options = players,

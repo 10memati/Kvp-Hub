@@ -24,6 +24,16 @@ local GameTab = Window:MakeTab({
 local GameSection = GameTab:AddSection({
  Name = "Game"
 })
+
+-- Game Sets
+GameTab:AddDropdown({
+	Name = "Open Block",
+	Default = nil,
+	Options = {"Lucky Block", "Rainbow Block", "Diamond Block"},
+	Callback = function(Value)
+		print(Value)
+	end
+})
 	
 -- Player Sets
   -- Speed
@@ -44,7 +54,7 @@ Tab:AddTextbox({
 end
 })
 
--- Jump Power
+  -- Jump Power
 Tab:AddTextbox({
     Name = "Jump Power",
     Default = "50",
@@ -62,7 +72,7 @@ Tab:AddTextbox({
     end
 })
 
--- Infinite Jump
+  -- Infinite Jump
 local InfiniteJumpEnabled = false
 Tab:AddToggle({
     Name = "Infinite Jump",
@@ -88,7 +98,7 @@ for _, player in pairs(players) do
 end
 --]]
 
--- Tp Tool
+  -- Tp Tool
 Tab:AddButton({
 	Name = "Tp Tool",
 	Callback = function()
@@ -117,7 +127,7 @@ Tab:AddToggle({
 })
 --]]
 
--- Esp
+  -- Esp
 Tab:AddButton({
     Name = "ESP",
     Callback = function(Value)

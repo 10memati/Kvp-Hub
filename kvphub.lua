@@ -68,23 +68,6 @@ for _, player in pairs(players) do
     table.insert(playerNames, player.Name)
 end
 
-Tab:AddDropdown({
-	Name = "Sample Dropdown",
-	Default = "1",
-	Options = playerNames,
-	Callback = function(Value)
-local user1Name = "user1"
-local user2Name = Value
-
-local user1 = game.Players.LocalPlayer
-local user2 = game:GetService("Players"):FindFirstChild(user2Name)
-
-if user1 and user2 then
-    user2:SetPrimaryPartCFrame(user1.Character.HumanoidRootPart.CFrame)
-			end
-	end
-})
-
 Tab:AddButton({
 	Name = "Tp tool",
 	Callback = function()
@@ -101,5 +84,18 @@ tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
 
+Tab:AddButton({
+	Name = "Owl hub script",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Fling ALL script(OP)",
+	Callback = function()
+loadstring(game:HttpGet('https://github.com/DigitalityScripts/roblox-scripts/raw/main/loop%20fling%20all'))()
+  	end    
+})
 
 OrionLib:Init()

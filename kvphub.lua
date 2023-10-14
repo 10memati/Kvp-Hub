@@ -115,6 +115,17 @@ Tab:AddToggle({
     Default = false,
     Callback = function(Value)
         if Value then
+ESP()
+        else then
+            for _, v in pairs(game.Workspace:FindFirstChild("Adornments"):GetChildren()) do
+        if v:IsA("BoxHandleAdornment") and v.Name == "shit" then
+            v:Destroy()
+           end
+        end
+     end
+end
+})
+
 local function _ESP(c)
   repeat wait() until c.PrimaryPart ~= nil
   for i,p in pairs(c:GetChildren()) do
@@ -150,15 +161,5 @@ local function ESP()
     end)  
   end)
 end
-ESP()
-        else then
-            for _, v in pairs(game.Workspace:FindFirstChild("Adornments"):GetChildren()) do
-        if v:IsA("BoxHandleAdornment") and v.Name == "shit" then
-            v:Destroy()
-           end
-        end
-     end
-end
-})
 
 OrionLib:Init() 

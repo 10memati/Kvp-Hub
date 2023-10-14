@@ -14,23 +14,32 @@ local Section = Tab:AddSection({
 
 Tab:AddTextbox({
     Name = "Hız",
-    Default = "100",
+    Default = "20",
     TextDisappear = false,
     Callback = function(Value)
-game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(Value)
+        local s = Value:gsub("[%a]", "")
+        local hiz = tonumber(s)
+        
+        if hiz > 300 then
+            hiz = 300
+            end
+        
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(hiz)
 end
 })
 
-local jumpPowerTextbox = Tab:AddTextbox({
+Tab:AddTextbox({
     Name = "Zıplama Gücü",
     Default = "50",
     Callback = function(Value)
-        local newJumpPower = tonumber(Value)
-        if newJumpPower then
-            newJumpPower = math.clamp(newJumpPower, 0, 300)
-            humanoid.JumpPower = newJumpPower
-            jumpPowerTextbox:Set(tostring(newJumpPower)) -- Metin girişini güncelle
-        end
+        local s = Value:gsub("[%a]", "")
+        local jump = tonumber(s)
+        
+        if jump > 500 then
+            jump = 500
+            end
+        
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = tonumber(jump)
     end
 })
 

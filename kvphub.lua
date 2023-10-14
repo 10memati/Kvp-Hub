@@ -24,7 +24,9 @@ local GameTab = Window:MakeTab({
 local GameSection = GameTab:AddSection({
  Name = "Game"
 })
-
+	
+-- Player Sets
+  -- Speed
 Tab:AddTextbox({
     Name = "Speed",
     Default = "20",
@@ -42,6 +44,7 @@ Tab:AddTextbox({
 end
 })
 
+-- Jump Power
 Tab:AddTextbox({
     Name = "Jump Power",
     Default = "50",
@@ -59,8 +62,8 @@ Tab:AddTextbox({
     end
 })
 
+-- Infinite Jump
 local InfiniteJumpEnabled = false
-
 Tab:AddToggle({
     Name = "Infinite Jump",
     Default = false,
@@ -75,13 +78,17 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
+--[[
+	--All Server Players
 local players = game:GetService("Players"):GetPlayers()
 local playerNames = {}
 
 for _, player in pairs(players) do
     table.insert(playerNames, player.Name)
 end
+--]]
 
+-- Tp Tool
 Tab:AddButton({
 	Name = "Tp Tool",
 	Callback = function()
@@ -97,10 +104,10 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
-
+	
+--[[
 local Noclip = true
 local ToggleNoclip = false
---[[
 Tab:AddToggle({
     Name = "Noclip Toggle",
     default = false,
@@ -110,6 +117,7 @@ Tab:AddToggle({
 })
 --]]
 
+-- Esp
 Tab:AddButton({
     Name = "ESP",
     Callback = function(Value)
@@ -117,10 +125,13 @@ Tab:AddButton({
     end
 })
 
+--
 OrionLib:Init() 
+	
 else 
+-- Error
 game:GetService("StarterGui"):SetCore("SendNotification",{
-	Title = game.placeId, -- Required
+	Title = 'Error', -- Required
 	Text = "This game is not supported by Kvp-Hub!", -- Required
 	Icon = "rbxassetid://1234567890" -- Optional
 })

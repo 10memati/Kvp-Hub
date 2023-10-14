@@ -86,7 +86,7 @@ tool.Parent = game.Players.LocalPlayer.Backpack
 
 local Noclip = true
 local ToggleNoclip = false
-
+--[[
 Tab:AddToggle({
     Name = "Noclip Toggle",
     default = false,
@@ -94,17 +94,7 @@ Tab:AddToggle({
         ToggleNoclip = Value
     end
 })
-
-game:GetService('RunService').Stepped:Connect(function()
-    if (Noclip or ToggleNoclip) and game.Players.LocalPlayer.Character ~= nil then
-        for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-            if v:IsA('BasePart') and v.CanCollide then
-                v.CanCollide = false
-            end
-        end
-    end
-end)
-
+--]]
 
 Tab:AddButton({
     Name = "ESP",

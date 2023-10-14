@@ -10,10 +10,19 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-	
 
-	local Section = Tab:AddSection({
-	Name = "Player"
+local Section = Tab:AddSection({
+ Name = "Player"
+})
+
+local GameTab = Window:MakeTab({
+	Name = "Game",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local GameSection = GameTab:AddSection({
+ Name = "Player"
 })
 
 Tab:AddTextbox({

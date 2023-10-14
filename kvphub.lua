@@ -84,20 +84,19 @@ tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
 
+local Noclip = true
+local ToggleNoclip = false
+
 Tab:AddToggle({
-    Name = "Noclip",
+    Name = "Noclip Toggle",
     Default = false,
     Callback = function(Value)
-        if Value then
-	 Clip = true
-        else
-	 Clip = false
-       end
+        ToggleNoclip = Value
     end
 })
 
 game:GetService('RunService').Stepped:Connect(function()
-    if Clip and game.Players.LocalPlayer.Character ~= nil then
+    if (Noclip or ToggleNoclip) and game.Players.LocalPlayer.Character ~= nil then
         for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide then
                 v.CanCollide = false

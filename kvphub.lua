@@ -25,30 +25,29 @@ local GameSection = GameTab:AddSection({
     Name = "Game"
 })
 
--- Game Sets
-local blockActions = {
-    ["lucky block"] = function()
-        game:GetService("ReplicatedStorage"):WaitForChild("SpawnLuckyBlock"):FireServer()
-    },
-    ["super block"] = function()
-        game:GetService("ReplicatedStorage"):WaitForChild("SpawnSuperBlock"):FireServer()
-    },
-    ["diamond block"] = function()
-        game:GetService("ReplicatedStorage"):WaitForChild("SpawnDiamondBlock"):FireServer()
-    },
-    ["rainbow block"] = function()
-        game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
-    },
-    ["galaxy block"] = function()
-        game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
-    }
-}
-
 GameTab:AddDropdown({
     Name = "Open Block",
     Default = nil,
     Options = {"Lucky Block", "Super Block", "Diamond Block", "Rainbow Block", "Galaxy Block"},
     Callback = function(Value)
+        local blockActions = {
+            ["lucky block"] = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("SpawnLuckyBlock"):FireServer()
+            },
+            ["super block"] = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("SpawnSuperBlock"):FireServer()
+            },
+            ["diamond block"] = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("SpawnDiamondBlock"):FireServer()
+            },
+            ["rainbow block"] = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+            },
+            ["galaxy block"] = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+            }
+        }
+
         local block = Value:lower():gsub("^%s*(.-)%s*$", "%1")
         local action = blockActions[block]
 

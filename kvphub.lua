@@ -115,19 +115,7 @@ Tab:AddToggle({
     Default = false,
     Callback = function(Value)
         if Value then
-            ESP()
-        else
-            for _, v in pairs(game.Workspace:FindFirstChild("Adornments"):GetChildren()) do
-                if v:IsA("BoxHandleAdornment") and v.Name == "shit" then
-                    v:Destroy()
-                end
-            end
-        end
-    end
-})
-
-
-local function _ESP(c)
+            function _ESP(c)
   repeat wait() until c.PrimaryPart ~= nil
   for i,p in pairs(c:GetChildren()) do
     if p.ClassName == "Part" or p.ClassName == "MeshPart" then
@@ -145,8 +133,7 @@ local function _ESP(c)
     end
   end
 end
-local function ESP()
-  for i,v in pairs(Players:GetChildren()) do
+            for i,v in pairs(Players:GetChildren()) do
     if v ~= game.Players.LocalPlayer then
       if v.Character then
         _ESP(v.Character)
@@ -161,6 +148,14 @@ local function ESP()
       _ESP(chr)
     end)  
   end)
-end
+        else
+            for _, v in pairs(game.Workspace:FindFirstChild("Adornments"):GetChildren()) do
+                if v:IsA("BoxHandleAdornment") and v.Name == "shit" then
+                    v:Destroy()
+                end
+            end
+        end
+    end
+})
 
 OrionLib:Init() 

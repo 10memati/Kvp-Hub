@@ -49,7 +49,7 @@ for _, player in pairs(players) do
   TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
 	Default = nil,
-	Options = players,
+	Options = playerNames,
 	Callback = function(Value)
 		local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")

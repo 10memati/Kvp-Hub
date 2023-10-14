@@ -9,9 +9,15 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+	
+local Tab = Window:MakeTab({
+	Name = "Lucky Block",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
-local Section = Tab:AddSection({
-	Name = "Player"
+local Section = luckyblock:AddSection({
+	Name = "Lucky Block"
 })
 
 Tab:AddTextbox({

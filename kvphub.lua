@@ -1,3 +1,6 @@
+local lt2 = "13822889"
+
+if game.placeId == lt2 then
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "KVP Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
@@ -104,3 +107,14 @@ Tab:AddButton({
 })
 
 OrionLib:Init() 
+else 
+	local notificationText = "This game is not supported by Kvp-Hub!"
+
+local notification = Instance.new("Message")
+notification.Text = notificationText
+notification.Parent = game.StarterGui
+
+wait(5)
+
+notification:Destroy()
+end

@@ -84,7 +84,7 @@ tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
 
--- locale ToggleNoclip = false
+locale ToggleNoclip = false
 
 Tab:AddToggle({
     Name = "Noclip",

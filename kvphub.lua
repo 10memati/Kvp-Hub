@@ -50,14 +50,16 @@ local InfiniteJumpEnabled = false
 Tab:AddToggle({
     Name = "Infinite Jump",
     Default = false,
-    Callback = function(Value) {
-	InfiniteJumpEnabled = Value
-    }
+    Callback = function(Value)
+        InfiniteJumpEnabled = Value
+    end
+})
 
-game:GetService("UserInputService").JumpRequest:connect(function()
-	if InfiniteJumpEnabled then
-		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-	end
+game:GetService("UserInputService").JumpRequest:Connect(function()
+    if InfiniteJumpEnabled then
+        game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+    end
 end)
+
 
 OrionLib:Init()

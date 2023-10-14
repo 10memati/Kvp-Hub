@@ -1,5 +1,38 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
 
+local Player = game.Players.LocalPlayer
+local UIS = game:GetService("UserInputService")
+Player.CharacterAdded:Wait()
+local hrp = Player.Character:WaitForChild("HumanoidRootPart")
+local RunService = game:GetService("RunService")
+local KeyFlags = {
+    P = false
+}
+
+-- Bu bayrak "fly" durumunu belirtir
+local isFlying = false
+
+function move(delta)
+    Player.Character:WaitForChild("HumanoidRootPart").CFrame *= CFrame.new(Vector3.new(0, 10 * delta, 0))
+end
+
+UIS.InputBegan:Connect(function(input, gameProcessedEvent)
+    if gameProcessedEvent then return end
+
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode.P then
+            move(1)
+            KeyFlags.P = true
+        end
+    end
+end)
+
+UIS.InputEnded:Connect(function(input, gameProcessedEvent)
+    if input.KeyCode == Enum.KeyCode.P then
+        KeyFlags.P = false
+    end
+end)
+
 local Window = OrionLib:MakeWindow({Name = "KVP Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
 local Tab = Window:MakeTab({
@@ -47,26 +80,19 @@ Tab:AddTextbox({
 })
 
 Tab:AddToggle({
-    Name = "Fly",
-    Default = false,
-    Callback = function ()
-     local toggle = Value
-      
-      if toggle then
-        local player = game.Players.LocalPlayer
-        local character = player.Character
-        local humanoid = character:FindFirstChild("Humanoid")
-
-        if humanoid then
-            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
-            RunService.RenderStepped:Connect(function()
-                local forward = humanoid.MoveDirection:PointToWorldSpace(Vector3.new(0, 0, 1))
-                character:SetPrimaryPartCFrame(CFrame.new(character.PrimaryPart.Position + forward * 10))
-            end)
-        end
+    Name = "Fly Toggle",
+    Default = false, -- Başlangıçta "false" olarak ayarlayın
+    Callback = function(Value)
+        isFlying = Value
     end
-end
 })
 
+RunService.RenderStepped:Connect(function(delta)
+    if isFlying and KeyFlags.P then
+        -- Eğer "fly" açıksa ve "P" tuşuna basılıysa, hareketi gerçekleştir
+        move(1)
+    end
+    -- Diğer kodlarınızı buraya ekleyin
+end)
 
 OrionLib:Init()

@@ -88,7 +88,11 @@ Tab:AddToggle({
     Name = "Noclip",
     Default = false,
     Callback = function(Value)
-        Clip = Value
+        if Value then
+	 Clip = true
+        else
+	 Clip = false
+       end
     end
 })
 

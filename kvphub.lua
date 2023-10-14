@@ -61,5 +61,31 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
+local players = game:GetService("Players"):GetPlayers()
+local playerNames = {}
+
+for _, player in pairs(players) do
+    table.insert(playerNames, player.Name)
+end
+
+Tab:AddDropdown({
+	Name = "Sample Dropdown",
+	Default = "1",
+	Options = playerNames,
+	Callback = function(Value)
+local selectedPlayerName = Value
+
+local selectedPlayer = game:GetService("Players"):FindFirstChild(selectedPlayerName)
+
+if selectedPlayer then
+    local teleportLocation = CFrame.new(Vector3.new(0, 10, 0))
+
+    selectedPlayer:SetPrimaryPartCFrame(teleportLocation)
+else
+    warn("Seçilen oyuncu bulunamadı.")
+			end
+	end
+})
+
 
 OrionLib:Init()

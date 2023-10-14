@@ -16,38 +16,48 @@ local Section = Tab:AddSection({
 })
 
 local GameTab = Window:MakeTab({
-	Name = "Game",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+    Name = "Game",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
 })
 
 local GameSection = GameTab:AddSection({
- Name = "Game"
+    Name = "Game"
 })
 
 -- Game Sets
-GameTab:AddDropdown({
-	Name = "Open Block",
-	Default = nil,
-	Options = {"Lucky Block", "Super Block", "Diamond Block", "Rainbow Block", "Galaxy Block"},
-	Callback = function(Value)
-		local block = Value
-		block = string.lower(block)
-                block = string.gsub(block, "^%s*(.-)%s*$", "%1")
-                block = tostring(block)
+local blockActions = {
+    ["lucky block"] = function()
+        game:GetService("ReplicatedStorage"):WaitForChild("SpawnLuckyBlock"):FireServer()
+    },
+    ["super block"] = function()
+        game:GetService("ReplicatedStorage"):WaitForChild("SpawnSuperBlock"):FireServer()
+    },
+    ["diamond block"] = function()
+        game:GetService("ReplicatedStorage"):WaitForChild("SpawnDiamondBlock"):FireServer()
+    },
+    ["rainbow block"] = function()
+        game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+    },
+    ["galaxy block"] = function()
+        game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+    }
+}
 
-		if block == "luckyblock" then
-		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnLuckyBlock"):FireServer()
-		elseif block == "superblock" then
-		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnSuperBlock"):FireServer()
-		elseif block == "diamondblock" then
-		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnDiamondBlock"):FireServer()
-		elseif block == "rainbowblock" then
-		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
-		elseif block == "galaxyblock" then
-		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
-	end
-   end
+GameTab:AddDropdown({
+    Name = "Open Block",
+    Default = nil,
+    Options = {"Lucky Block", "Super Block", "Diamond Block", "Rainbow Block", "Galaxy Block"},
+    Callback = function(Value)
+        local block = Value:lower():gsub("^%s*(.-)%s*$", "%1")
+        local action = blockActions[block]
+
+        if action then
+            action()
+        else
+            print("Invalid block selection")
+        end
+    end
 })
 	
 -- Player Sets

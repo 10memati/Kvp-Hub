@@ -11,7 +11,7 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 	
-local Tab = Window:MakeTab({
+local GameTab = Window:MakeTab({
 	Name = "Game",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false

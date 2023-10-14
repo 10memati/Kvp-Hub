@@ -29,10 +29,25 @@ local GameSection = GameTab:AddSection({
 GameTab:AddDropdown({
 	Name = "Open Block",
 	Default = nil,
-	Options = {"Lucky Block", "Rainbow Block", "Diamond Block"},
+	Options = {"Lucky Block", "Super Block", "Diamond Block", "Rainbow Block", "Galaxy Block"},
 	Callback = function(Value)
-		print(Value)
+		local block = Value
+		block = string.lower(block)
+                block = string.gsub(block, "^%s*(.-)%s*$", "%1")
+                block = tostring(block)
+
+		if block == "luckyblock" then
+		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnLuckyBlock"):FireServer()
+		elseif block == "superblock" then
+		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnSuperBlock"):FireServer()
+		elseif block == "diamondblock" then
+		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnDiamondBlock"):FireServer()
+		elseif block == "rainbowblock" then
+		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+		elseif block == "galaxyblock" then
+		  game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
 	end
+   end
 })
 	
 -- Player Sets

@@ -17,7 +17,7 @@ local GameTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local Section = Window:AddSection({
+local Section = GameTab:AddSection({
 	Name = "Game"
 })
 	local Section = Tab:AddSection({

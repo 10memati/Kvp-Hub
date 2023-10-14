@@ -84,29 +84,37 @@ tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
 
-locale ToggleNoclip = false
-
 Tab:AddToggle({
     Name = "Noclip",
     Default = false,
     Callback = function(Value)
-	ToggleNoclip = Value
-
+        ToggleNoclip = Value
+        if ToggleNoclip then
+            noclip()
+        else
+            clip()
+        end
     end
 })
 
-        if ToggleNoclip then
-            for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
-                    v.CanCollide = false
-                end
-            end
-        else
-            for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                if v:IsA('BasePart') and not v.CanCollide and v.Name ~= floatName then
-                    v.CanCollide = true
-                end
-            end
+local Clip = false
+
+function noclip()
+    Clip = true
 end
 
-OrionLib:Init()
+function clip()
+    Clip = false
+end
+
+game:GetService('RunService').Stepped:Connect(function()
+    if Clip and game.Players.LocalPlayer.Character ~= nil then
+        for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+            if v:IsA('BasePart') and v.CanCollide then
+                v.CanCollide = false
+            end
+        end
+    end
+end)
+
+OrionLib:Init() 

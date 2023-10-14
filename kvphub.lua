@@ -21,7 +21,7 @@ local Section = Window:AddSection({
 	Name = "Game"
 })
 	local Section = Tab:AddSection({
-	Name = "Playet"
+	Name = "Player"
 })
 
 Tab:AddTextbox({

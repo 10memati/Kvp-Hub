@@ -47,13 +47,7 @@ Tab:AddTextbox({
 
 local InfiniteJumpEnabled = false
 
-Tab:AddToggle({
-    Name = "Infinite Jump",
-    Default = false,
-    Callback = function(Value)
-        InfiniteJumpEnabled = Value
-    end
-})
+-- inf
 
 game:GetService("UserInputService").JumpRequest:Connect(function()
     if InfiniteJumpEnabled then

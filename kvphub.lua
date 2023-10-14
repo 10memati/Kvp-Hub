@@ -73,18 +73,32 @@ Tab:AddDropdown({
 	Default = "1",
 	Options = playerNames,
 	Callback = function(Value)
-local selectedPlayerName = Value
+local user1Name = "user1"
+local user2Name = Value
 
-local selectedPlayer = game:GetService("Players"):FindFirstChild(selectedPlayerName)
+local user1 = game.Players.LocalPlayer
+local user2 = game:GetService("Players"):FindFirstChild(user2Name)
 
-if selectedPlayer then
-    local teleportLocation = CFrame.new(Vector3.new(0, 10, 0))
-
-    selectedPlayer:SetPrimaryPartCFrame(teleportLocation)
-else
-    warn("Seçilen oyuncu bulunamadı.")
+if user1 and user2 then
+    user2:SetPrimaryPartCFrame(user1.Character.HumanoidRootPart.CFrame)
 			end
 	end
+})
+
+Tab:AddButton({
+	Name = "Tp tool",
+	Callback = function()
+      		mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Tp tool(Equip to Click TP)"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+  	end    
 })
 
 

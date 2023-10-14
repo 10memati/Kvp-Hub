@@ -20,6 +20,9 @@ local GameTab = Window:MakeTab({
 local Section = Window:AddSection({
 	Name = "Game"
 })
+	local Section = Tab:AddSection({
+	Name = "Playet"
+})
 
 Tab:AddTextbox({
     Name = "Speed",

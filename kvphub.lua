@@ -40,7 +40,7 @@ local TeleportSection = TeleportTab:AddSection({
   
 -- Teleport Sets
   -- Teleport Player  
-  TeleportTab:AddDropdown({
+  local Dropdown = TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
 	Default = nil,
 	Options = {},

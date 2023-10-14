@@ -14,12 +14,27 @@ local Section = Tab:AddSection({
 
 local speedTextbox = Tab:AddTextbox({
     Name = "Hız",
-    Default = "100", 
+    Default = "100",
     TextDisappear = false,
     Callback = function(Value)
         local newSpeed = tonumber(Value)
         if newSpeed then
+            newSpeed = math.clamp(newSpeed, 0, 300)
             humanoid.WalkSpeed = newSpeed
+            speedTextbox:Set(tostring(newSpeed)) -- Metin girişini güncelle
+        end
+    end
+})
+
+local jumpPowerTextbox = Tab:AddTextbox({
+    Name = "Zıplama Gücü",
+    Default = "50",
+    Callback = function(Value)
+        local newJumpPower = tonumber(Value)
+        if newJumpPower then
+            newJumpPower = math.clamp(newJumpPower, 0, 300)
+            humanoid.JumpPower = newJumpPower
+            jumpPowerTextbox:Set(tostring(newJumpPower)) -- Metin girişini güncelle
         end
     end
 })

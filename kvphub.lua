@@ -49,7 +49,7 @@ local InfiniteJumpEnabled = false
 
 Tab:AddToggle({
     Name = "Infinite Jump",
-    Default: false,
+    Default = false,
     Callback = function(Value) {
 	InfiniteJumpEnabled = Value
     }

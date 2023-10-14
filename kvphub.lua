@@ -3,7 +3,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10m
 local Window = OrionLib:MakeWindow({Name = "KVP Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
 local Tab = Window:MakeTab({
-	Name = "Oyuncu",
+	Name = "Player",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -13,7 +13,7 @@ local Section = Tab:AddSection({
 })
 
 Tab:AddTextbox({
-    Name = "Hız",
+    Name = "Speed",
     Default = "20",
     TextDisappear = false,
     Callback = function(Value)
@@ -23,13 +23,14 @@ Tab:AddTextbox({
         if hiz > 300 then
             hiz = 300
             end
+           Value = hiz
         
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(hiz)
 end
 })
 
 Tab:AddTextbox({
-    Name = "Zıplama Gücü",
+    Name = "Jump Power",
     Default = "50",
     Callback = function(Value)
         local s = Value:gsub("[%a]", "")
@@ -38,28 +39,34 @@ Tab:AddTextbox({
         if jump > 500 then
             jump = 500
             end
+
+	Value = jump
         
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = tonumber(jump)
     end
 })
 
 Tab:AddToggle({
-    Name = "Infinite Jump",
+    Name = "Fly",
     Default = false,
-    Callback = function(Value)
-        _G.infinjump = Value
+    Callback = function ()
+     local toggle = Value
+      
+      if toggle then
+        local player = game.Players.LocalPlayer
+        local character = player.Character
+        local humanoid = character:FindFirstChild("Humanoid")
+
+        if humanoid then
+            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
+            RunService.RenderStepped:Connect(function()
+                local forward = humanoid.MoveDirection:PointToWorldSpace(Vector3.new(0, 0, 1))
+                character:SetPrimaryPartCFrame(CFrame.new(character.PrimaryPart.Position + forward * 10))
+            end)
+        end
     end
+end
 })
 
-_G.infinjump = false
-
-local player = game.Players.LocalPlayer
-local humanoid = player.Character:FindFirstChild("Humanoid")
-
-player:GetMouse().KeyDown:Connect(function(key)
-    if key == "space" and humanoid and (not humanoid:GetStateEnabled(Enum.HumanoidStateType.Seated) or _G.infinjump) then
-        humanoid:Move(Vector3.new(0, 10, 0), false)
-    end
-end)
 
 OrionLib:Init()

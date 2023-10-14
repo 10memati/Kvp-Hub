@@ -25,6 +25,7 @@ local GameSection = GameTab:AddSection({
     Name = "Game"
 })
 
+  -- Blocks
 GameTab:AddButton({
     Name = "Lucky Block",
     Callback = function(Value)

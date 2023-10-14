@@ -1,6 +1,6 @@
 local lt2 = "13822889" -- Lumber Tycoon 2
 local lb = "662417684" -- Lucky Blocks
-local psx = "6284583030" -- Pet Simulator X
+local bee = "1537690962" -- Bee Swarm Simulator
 
 -- Lucky Blocks
 if tostring(game.placeId) == tostring(lb) then
@@ -194,6 +194,36 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
+
+  Tab:AddButton({
+	Name = "Konum",
+	Callback = function()
+local player = game.Players.LocalPlayer -- Oyuncunun nesnesini alır
+local character = player.Character -- Oyuncunun karakter nesnesini alır
+
+if character then
+    local rootPart = character:FindFirstChild("HumanoidRootPart") -- Karakterin HumanoidRootPart nesnesini arar
+
+    if rootPart then
+        local position = rootPart.Position
+        local x, y, z = position.X, position.Y, position.Z
+        OrionLib:MakeNotification({
+              Name = "Error",
+              Content = "X: " .. x .. " Y: " .. y .. "Z: " .. z,
+              Image = "rbxassetid://4483345998",
+              Time = 5
+          })
+    else
+        print("HumanoidRootPart bulunamadı.")
+    end
+else
+    print("Karakter bulunamadı.")
+        end
+        
+  	end    
+})
+
+  
 --[[
 	--All Server Players
 local players = game:GetService("Players"):GetPlayers()
@@ -245,7 +275,7 @@ Tab:AddButton({
 OrionLib:Init()
 elseif tostring(game.placeId) == tostring(psx) then
    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "KVP Hub | Pet Simulator X! 🐾", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
+local Window = OrionLib:MakeWindow({Name = "KVP Hub | Bee Swarm Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
 local Tab = Window:MakeTab({
 	Name = "Player",

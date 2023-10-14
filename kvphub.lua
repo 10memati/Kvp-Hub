@@ -62,6 +62,16 @@ GameTab:AddButton({
 	game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
   end
 })
+  
+GameTab:AddButton({
+    Name = "Void Block",
+    Callback = function(Value)
+    local miktar = 6
+for i = 1, miktar do
+	game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+    end
+ end
+})
 
 -- Player Sets
   -- Speed

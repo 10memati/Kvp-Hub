@@ -11,15 +11,7 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 	
-local Tab2 = Window:MakeTab({
-	Name = "Game",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
 
-local Section = Tab2:AddSection({
-	Name = "Game"
-})
 	local Section = Tab:AddSection({
 	Name = "Player"
 })

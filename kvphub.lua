@@ -116,7 +116,7 @@ Tab:AddButton({
 OrionLib:Init() 
 else 
 game:GetService("StarterGui"):SetCore("SendNotification",{
-	Title = "Error", -- Required
+	Title = game.placeId, -- Required
 	Text = "This game is not supported by Kvp-Hub!", -- Required
 	Icon = "rbxassetid://1234567890" -- Optional
 })

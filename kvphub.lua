@@ -88,24 +88,9 @@ Tab:AddToggle({
     Name = "Noclip",
     Default = false,
     Callback = function(Value)
-        ToggleNoclip = Value
-        if ToggleNoclip then
-            noclip()
-        else
-            clip()
-        end
+        Clip = Value
     end
 })
-
-local Clip = false
-
-function noclip()
-    Clip = true
-end
-
-function clip()
-    Clip = false
-end
 
 game:GetService('RunService').Stepped:Connect(function()
     if Clip and game.Players.LocalPlayer.Character ~= nil then

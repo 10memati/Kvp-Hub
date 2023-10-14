@@ -38,18 +38,11 @@ local TeleportSection = TeleportTab:AddSection({
 })
 
 -- Teleport Sets
-  -- Teleport Player
-  local players = game:GetService("Players"):GetPlayers()
-local playerNames = {}
-
-for _, player in pairs(players) do
-    table.insert(playerNames, player.Name)
-  end
-  
+  -- Teleport Player  
   TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
 	Default = nil,
-	Options = playerNames,
+	Options = {},
 	Callback = function(Value)
 		local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
@@ -75,6 +68,26 @@ else
 	end
 })
 
+  local function UpdatePlayerOptions()
+    local players = game.Players:GetPlayers()
+    local playerNames = {}
+    
+    for _, player in pairs(players) do
+        table.insert(playerNames, player.Name)
+    end
+
+    Dropdown:Refresh(playerNames, false)
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    UpdatePlayerOptions()
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+    UpdatePlayerOptions()
+end)
+
+UpdatePlayerOptions()
 -- Game Sets
   -- Blocks
 GameTab:AddButton({

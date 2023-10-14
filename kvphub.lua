@@ -84,11 +84,17 @@ tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
 
+-- locale ToggleNoclip = false
+
 Tab:AddToggle({
     Name = "Noclip",
     Default = false,
     Callback = function(Value)
 	ToggleNoclip = Value
+
+    end
+})
+
         if ToggleNoclip then
             for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
                 if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
@@ -101,8 +107,6 @@ Tab:AddToggle({
                     v.CanCollide = true
                 end
             end
-			end
-    end
-})
+end
 
 OrionLib:Init()

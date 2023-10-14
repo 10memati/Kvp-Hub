@@ -47,7 +47,7 @@ Tab:AddTextbox({
 
 local InfiniteJumpEnabled = false
 
--- inf
+-- in
 
 game:GetService("UserInputService").JumpRequest:Connect(function()
     if InfiniteJumpEnabled then

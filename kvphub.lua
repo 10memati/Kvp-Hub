@@ -90,7 +90,7 @@ Tab:AddToggle({
     Name = "Noclip",
     Default = false,
     Callback = function(Value)
-        local Noclip = Value
+        Noclip = Value
         if Noclip then
             noclip()
         else

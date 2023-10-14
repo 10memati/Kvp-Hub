@@ -22,7 +22,7 @@ local GameTab = Window:MakeTab({
 })
 
 local GameSection = GameTab:AddSection({
- Name = "Player"
+ Name = "Game"
 })
 
 Tab:AddTextbox({

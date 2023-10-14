@@ -69,12 +69,12 @@ for _, player in pairs(players) do
 end
 
 Tab:AddButton({
-	Name = "Tp tool",
+	Name = "Tp Tool",
 	Callback = function()
       		mouse = game.Players.LocalPlayer:GetMouse()
 tool = Instance.new("Tool")
 tool.RequiresHandle = false
-tool.Name = "Tp tool(Equip to Click TP)"
+tool.Name = "Tp Tool (Click)"
 tool.Activated:connect(function()
 local pos = mouse.Hit+Vector3.new(0,2.5,0)
 pos = CFrame.new(pos.X,pos.Y,pos.Z)
@@ -84,18 +84,37 @@ tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
 
-Tab:AddButton({
-	Name = "Owl hub script",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
-  	end    
+Tab:AddToggle({
+    Name = "Noclip",
+    Default = false,
+    Callback = function(Value)
+        Noclip = Value
+        if Noclip then
+            noclip()
+        else
+            clip()
+        end
+    end
 })
 
-Tab:AddButton({
-	Name = "Fling ALL script(OP)",
-	Callback = function()
-loadstring(game:HttpGet('https://github.com/DigitalityScripts/roblox-scripts/raw/main/loop%20fling%20all'))()
-  	end    
-})
+local function noclip()
+    Clip = false
+    local function Nocl()
+        if Clip == false and game.Players.LocalPlayer.Character ~= nil then
+            for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                    v.CanCollide = false
+                end
+            end
+        end
+        wait(0.21)
+    end
+    Noclip = game:GetService('RunService').Stepped:Connect(Nocl)
+end
+
+local function clip()
+    if Noclip then Noclip:Disconnect() end
+    Clip = true
+end
 
 OrionLib:Init()

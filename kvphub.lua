@@ -84,14 +84,11 @@ tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
 
-local Noclip = false
-
 Tab:AddToggle({
     Name = "Noclip",
     Default = false,
     Callback = function(Value)
-        Noclip = Value
-        if Noclip then
+        if Value then
             noclip()
         else
             clip()

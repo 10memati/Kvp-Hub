@@ -49,7 +49,7 @@ local TeleportSection = TeleportTab:AddSection({
 })
 
 
--- Teleport Sets
+--[[ Teleport Sets
   -- Location
   local LocationParagraph = TeleportTab:AddParagraph("Location", "")
 
@@ -131,7 +131,7 @@ else
     hata('No such player was found.')
         end
       end
-})
+})]]
 
 -- Game Sets
   -- Blocks
@@ -285,7 +285,7 @@ local TeleportSection = TeleportTab:AddSection({
 })
 
 
--- Teleport Sets
+--[[ Teleport Sets
   -- Location
   local LocationParagraph = TeleportTab:AddParagraph("Location", "")
 
@@ -356,7 +356,7 @@ UpdatePlayerOptions()
  -- Teleport Area
 TeleportTab:AddDropdown({
       Name = "Teleport Area",
-      Default = nil,
+      Default = ,
       Options = {"City"}
       Callback = function(Value)
         local targetPosition = Vector3.new()
@@ -371,8 +371,7 @@ else
     hata('No such player was found.')
         end
       end
-})
-
+})]]
 	
 -- Player Sets
   -- Speed

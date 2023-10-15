@@ -49,21 +49,29 @@ local TeleportSection = TeleportTab:AddSection({
 })
 
 
---[[ Teleport Sets
+-- Teleport Sets
   -- Location
   local LocationParagraph = TeleportTab:AddParagraph("Location", "")
+
+local function FormatLocation(position)
+    local x = math.floor(position.X)
+    local y = math.floor(position.Y)
+    local z = math.floor(position.Z)
+    return string.format("X=%d, Y=%d, Z=%d", x, y, z)
+end
 
 local function UpdateLocation()
     local player = game.Players.LocalPlayer
     if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
         local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
         local position = humanoidRootPart.Position
-        LocationParagraph:Set("Location: X=" .. position.X .. " Y=" .. position.Y .. " Z=" .. position.Z)
+        local formattedLocation = FormatLocation(position)
+        LocationParagraph:Set("Location: " .. formattedLocation)
     end
 end
 
 game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
-
+--[[
 local players = game.Players:GetPlayers()
     local playerNames = {}
     
@@ -285,21 +293,29 @@ local TeleportSection = TeleportTab:AddSection({
 })
 
 
---[[ Teleport Sets
+-- Teleport Sets
   -- Location
   local LocationParagraph = TeleportTab:AddParagraph("Location", "")
+
+local function FormatLocation(position)
+    local x = math.floor(position.X)
+    local y = math.floor(position.Y)
+    local z = math.floor(position.Z)
+    return string.format("X=%d, Y=%d, Z=%d", x, y, z)
+end
 
 local function UpdateLocation()
     local player = game.Players.LocalPlayer
     if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
         local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
         local position = humanoidRootPart.Position
-        LocationParagraph:Set("Location: X=" .. position.X .. " Y=" .. position.Y .. " Z=" .. position.Z)
+        local formattedLocation = FormatLocation(position)
+        LocationParagraph:Set("Location: " .. formattedLocation)
     end
 end
 
 game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
-
+--[[
 local players = game.Players:GetPlayers()
     local playerNames = {}
     

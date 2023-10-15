@@ -71,7 +71,7 @@ local function UpdateLocation()
 end
 
 game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
---[[
+
 local players = game.Players:GetPlayers()
     local playerNames = {}
     
@@ -123,7 +123,7 @@ game.Players.PlayerRemoving:Connect(function(player)
     UpdatePlayerOptions()
 end)
 
- -- Teleport Area
+ --[[ Teleport Area
 TeleportTab:AddButton({
       Name = "Teleport Timed Blocks",
       Callback = function(Value)

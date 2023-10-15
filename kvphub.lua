@@ -98,7 +98,7 @@ UpdatePlayerOptions()
 
  -- Teleport Area
 TeleportTab:AddButton({
-      Name = "Teleport Timed Blocks"
+      Name = "Teleport Timed Blocks",
       Callback = function(Value)
         local targetPosition = Vector3.new(-1040.6402587890625, 194.44700622558594, 90.80938720703125)
 

@@ -50,6 +50,20 @@ local TeleportSection = TeleportTab:AddSection({
 
 
 -- Teleport Sets
+  -- Location
+  local LocationParagraph = TeleportTab:AddParagraph("Location", "")
+
+local function UpdateLocation()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+        local position = humanoidRootPart.Position
+        LocationParagraph:Set("Location: X=" .. position.X .. " Y=" .. position.Y .. " Z=" .. position.Z)
+    end
+end
+
+game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
+
   -- Teleport Player  
   local Dropdown = TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
@@ -114,11 +128,6 @@ else
       end
 })
 
-  -- Location
-TeleportTab:AddLabel("Label")
-TeleportTab:AddParagraph("Paragraph","Paragraph Content")
-
-  
 -- Game Sets
   -- Blocks
 GameTab:AddButton({

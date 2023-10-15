@@ -223,10 +223,14 @@ Tab:AddTextbox({
 local Transparency = true
 local NoClip = false
 
-local IsToggled = false
 
-local function ToggleInvisibility()
-    if IsToggled then
+  
+Tab:AddToggle({
+    Name = "Invisible",
+    Default = false,
+    Callback = function(Value)
+	local isToggled = Value
+      if IsToggled then
         RealCharacter.Parent = workspace
         RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
 
@@ -242,13 +246,7 @@ local function ToggleInvisibility()
         FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
 
         IsToggled = true
-    end
-	end
-Tab:AddToggle({
-    Name = "Invisible",
-    Default = false,
-    Callback = function(Value)
-	ToggleInvisibility()
+     end
     end
 })
 

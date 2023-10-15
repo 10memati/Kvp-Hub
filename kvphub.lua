@@ -217,6 +217,41 @@ Tab:AddTextbox({
     end
 })
 
+  -- Invisibility
+	
+        -- Ayarlar
+local Transparency = true
+local NoClip = false
+
+local IsToggled = false
+
+local function ToggleInvisibility()
+    if IsToggled then
+        RealCharacter.Parent = workspace
+        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        FakeCharacter:Destroy()
+        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        IsToggled = false
+    else
+        RealCharacterStartPosition = RealCharacter.HumanoidRootPart.CFrame
+ RealCharacter.HumanoidRootPart.CFrame = CFrame.new(0, -500, 0)
+
+        FakeCharacter.Parent = workspace
+        FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        IsToggled = true
+    end
+	end
+Tab:AddToggle({
+    Name = "Invisible",
+    Default = false,
+    Callback = function(Value)
+	ToggleInvisibility()
+    end
+})
+
   -- Infinite Jump
 local InfiniteJumpEnabled = false
 Tab:AddToggle({
@@ -233,13 +268,14 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
-  --[[ Fly
+ Fly
 Tab:AddButton({
-    Name = "Fly Menu",
+    Name = "Fly Gui",
     Callback = function(Value)
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
+  end
 })
-		]]--
+		
 --
 OrionLib:Init()
 --

@@ -370,7 +370,7 @@ UpdatePlayerOptions()
  -- Teleport Area
 TeleportTab:AddDropdown({
       Name = "Teleport Area",
-      Default = ,
+      Default = "City",
       Options = {"City"}
       Callback = function(Value)
         local targetPosition = Vector3.new()

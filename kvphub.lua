@@ -1,10 +1,12 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
+
+
 local lt2 = "13822889" -- Lumber Tycoon 2
 local lb = "662417684" -- Lucky Blocks
 local los = "3101667897" -- Legend of Speed
 
 function hata(content)
-	OrionLib:MakeNotification({
+    OrionLib:MakeNotification({
         Name = "Error",
         Content = content,
         Image = "rbxassetid://4483345998",
@@ -62,11 +64,18 @@ end
 
 game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
 
+local players = game.Players:GetPlayers()
+    local playerNames = {}
+    
+    for _, player in pairs(players) do
+        table.insert(playerNames, player.Name)
+    end
+
   -- Teleport Player  
   local Dropdown = TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
 	Default = nil,
-	Options = {},
+	Options = playerNames,
 	Callback = function(Value)
 		local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
@@ -105,8 +114,6 @@ end)
 game.Players.PlayerRemoving:Connect(function(player)
     UpdatePlayerOptions()
 end)
-
-UpdatePlayerOptions()
 
  -- Teleport Area
 TeleportTab:AddButton({
@@ -293,11 +300,18 @@ end
 
 game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
 
+local players = game.Players:GetPlayers()
+    local playerNames = {}
+    
+    for _, player in pairs(players) do
+        table.insert(playerNames, player.Name)
+    end
+
   -- Teleport Player  
   local Dropdown = TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
 	Default = nil,
-	Options = {},
+	Options = playerNames,
 	Callback = function(Value)
 		local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
@@ -343,7 +357,7 @@ UpdatePlayerOptions()
 TeleportTab:AddDropdown({
       Name = "Teleport Area",
       Default = nil,
-      Options = {}
+      Options = {"City"}
       Callback = function(Value)
         local targetPosition = Vector3.new()
 
@@ -359,6 +373,66 @@ else
       end
 })
 
+-- Game Sets
+  -- Auto Farm | Speed
+GameTab:AddToggle({
+     Name = "Auto Speed Farm",
+     Default = false,
+     Callback = function (Value)
+	local toggle = Value
+  if toggle then
+ while true do
+    local args = {
+    [1] = "collectOrb",
+    [2] = "Red Orb",
+    [3] = "Magma City"
+  }
+
+game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
+      wait(2.3)
+    end
+  end
+end
+})
+
+  -- Auto Farm | Gem
+GameTab:AddToggle({
+     Name = "Auto Gem Farm",
+     Default = false,
+     Callback = function (Value)
+	local toggle = Value
+  if toggle then
+ while true do
+    local args = {
+    [1] = "collectOrb",
+    [2] = "Gem",
+    [3] = "Magma City"
+  }
+
+game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
+      wait(2.3)
+      end
+   end
+end
+})
+
+  -- Auto Farm | Gem
+GameTab:AddToggle({
+     Name = "Auto Rebirth",
+     Default = false,
+     Callback = function (Value)
+     local toggle = Value
+      if toggle then
+       while true do
+	 local args = {
+    [1] = "rebirthRequest"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebirthEvent"):FireServer(unpack(args))
+      end
+    end
+  end
+})
 	
 -- Player Sets
   -- Speed
@@ -423,6 +497,7 @@ Tab:AddButton({
 
 --
 OrionLib:Init()
+--
 --
 else
 -- Error

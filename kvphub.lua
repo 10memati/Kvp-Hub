@@ -3,7 +3,7 @@ local lt2 = "13822889" -- Lumber Tycoon 2
 local lb = "662417684" -- Lucky Blocks
 local los = "3101667897" -- Legend of Speed
 
-local function hata(content)
+function hata(content)
 	OrionLib:MakeNotification({
         Name = "Error",
         Content = content,

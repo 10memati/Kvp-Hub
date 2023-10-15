@@ -367,7 +367,7 @@ end)
 
 UpdatePlayerOptions()
 
- -- Teleport Area
+ --[[ Teleport Area
 TeleportTab:AddDropdown({
       Name = "Teleport Area",
       Default = "City",
@@ -385,7 +385,7 @@ else
     hata('No such player was found.')
         end
       end
-})
+})]]
 	
 -- Player Sets
   -- Speed

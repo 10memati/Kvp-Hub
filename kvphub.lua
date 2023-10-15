@@ -370,7 +370,7 @@ end)
 
 UpdatePlayerOptions()
 
- --[[ Teleport Area
+ -- Teleport Area
 TeleportTab:AddDropdown({
       Name = "Teleport Area",
       Default = nil,
@@ -449,7 +449,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebir
       end
     end
   end
-})--]]
+})
 	
 -- Player Sets
   -- Speed
@@ -490,32 +490,25 @@ Tab:AddTextbox({
 
   -- Invisibility
 Tab:AddToggle({
-    Name = "Invisible",
-    Default = false,
-    Callback = function(Value)
-    local Transparency = true
-    local NoClip = false
-	local isToggled = Value
-      if IsToggled then
-        RealCharacter.Parent = workspace
-        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+Name = "Invisible",
+Default = false,
+Callback = function(Value)
+if Value then
+RealCharacter.Parent = workspace
+RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
 
-        FakeCharacter:Destroy()
+FakeCharacter:Destroy()
         RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
-
-        IsToggled = false
     else
         RealCharacterStartPosition = RealCharacter.HumanoidRootPart.CFrame
- RealCharacter.HumanoidRootPart.CFrame = CFrame.new(0, -500, 0)
+        RealCharacter.HumanoidRootPart.CFrame = CFrame.new(0, -500, 0)
 
         FakeCharacter.Parent = workspace
         FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
-
-        IsToggled = true
-     end
     end
+end
 })
-
+	
   -- Infinite Jump
 local InfiniteJumpEnabled = false
 Tab:AddToggle({
@@ -532,13 +525,13 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
- --[[ Fly
+ -- Fly
 Tab:AddButton({
     Name = "Fly Gui",
     Callback = function(Value)
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
   end
-})--]]
+})
 		
 --
 OrionLib:Init()

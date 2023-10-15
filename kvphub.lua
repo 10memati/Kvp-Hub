@@ -240,7 +240,7 @@ Tab:AddButton({
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
   end
 })
-	
+
 --
 OrionLib:Init()
 --
@@ -486,7 +486,7 @@ Tab:AddButton({
 --
 OrionLib:Init()
 --
-
+--
 else
 -- Error
 hata("This game is not supported by Kvp Hub!")

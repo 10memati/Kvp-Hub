@@ -240,10 +240,6 @@ Tab:AddButton({
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
   end
 })
-
-Tab:AddButton({
-    Name = "Invisible",
-    Callback = function(Value)
 local ScriptStarted = false
 local Transparency = true
 local NoClip = false
@@ -372,12 +368,14 @@ local function Invisible()
       end
       IsInvisible = false
   end
-end
-
-if RealCharacter:FindFirstChild("HumanoidRootPart") and FakeCharacter:FindFirstChild("HumanoidRootPart") then
+	end
+	
+Tab:AddButton({
+    Name = "Invisible",
+    Callback = function(Value)
+-- if RealCharacter:FindFirstChild("HumanoidRootPart") and FakeCharacter:FindFirstChild("HumanoidRootPart") then
     Invisible()
-end
-
+--end
 end
 })
 --

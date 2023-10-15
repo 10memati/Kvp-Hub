@@ -513,9 +513,8 @@ Tab:AddButton({
 
   -- Invisibility
 
-Tab:AddToggle({
+Tab:AddButton({
 Name = "Invisible",
-Default = false,
 Callback = function (Value)
 local ScriptStarted = false
 local Keybind = "E"

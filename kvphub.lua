@@ -218,15 +218,13 @@ Tab:AddTextbox({
 })
 
   -- Invisibility
-	
- -- Ayarlar
-local Transparency = true
-local NoClip = false
   
 Tab:AddToggle({
     Name = "Invisible",
     Default = false,
     Callback = function(Value)
+	local Transparency = true
+        local NoClip = false
 	local isToggled = Value
       if IsToggled then
         RealCharacter.Parent = workspace
@@ -330,7 +328,7 @@ game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
   local Dropdown = TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
 	Default = nil,
-	Options = {},
+	Options = {"},
 	Callback = function(Value)
 		local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
@@ -393,65 +391,7 @@ else
 })
 
 -- Game Sets
-  -- Auto Farm | Speed
-GameTab:AddToggle({
-     Name = "Auto Speed Farm",
-     Default = false,
-     Callback = function (Value)
-	local toggle = Value
-  if toggle then
- while true do
-    local args = {
-    [1] = "collectOrb",
-    [2] = "Red Orb",
-    [3] = "Magma City"
-  }
-
-game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
-      wait(2.3)
-    end
-  end
-end
-})
-
-  -- Auto Farm | Gem
-GameTab:AddToggle({
-     Name = "Auto Gem Farm",
-     Default = false,
-     Callback = function (Value)
-	local toggle = Value
-  if toggle then
- while true do
-    local args = {
-    [1] = "collectOrb",
-    [2] = "Gem",
-    [3] = "Magma City"
-  }
-
-game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
-      wait(2.3)
-      end
-   end
-end
-})
-
-  -- Auto Farm | Gem
-GameTab:AddToggle({
-     Name = "Auto Rebirth",
-     Default = false,
-     Callback = function (Value)
-     local toggle = Value
-      if toggle then
-       while true do
-	 local args = {
-    [1] = "rebirthRequest"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebirthEvent"):FireServer(unpack(args))
-      end
-    end
-  end
-})
+  
 	
 -- Player Sets
   -- Speed

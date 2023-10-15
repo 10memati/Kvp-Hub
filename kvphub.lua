@@ -217,35 +217,6 @@ Tab:AddTextbox({
     end
 })
 
-  --[[ Invisibility
-  
-Tab:AddToggle({
-    Name = "Invisible",
-    Default = false,
-    Callback = function(Value)
-	local Transparency = true
-        local NoClip = false
-	local isToggled = Value
-      if IsToggled then
-        RealCharacter.Parent = workspace
-        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
-
-        FakeCharacter:Destroy()
-        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
-
-        IsToggled = false
-    else
-        RealCharacterStartPosition = RealCharacter.HumanoidRootPart.CFrame
- RealCharacter.HumanoidRootPart.CFrame = CFrame.new(0, -500, 0)
-
-        FakeCharacter.Parent = workspace
-        FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
-
-        IsToggled = true
-     end
-    end
-})]]--
-
   -- Infinite Jump
 local InfiniteJumpEnabled = false
 Tab:AddToggle({
@@ -262,13 +233,41 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
- --[[ Fly
+ -- Fly
 Tab:AddButton({
     Name = "Fly Gui",
     Callback = function(Value)
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
   end
-})--]]
+})
+
+  -- Invisibility
+Tab:AddToggle({
+    Name = "Invisible",
+    Default = false,
+    Callback = function(Value)
+	local Transparency = true
+        local NoClip = false
+	local isToggled = Value
+      if isToggled then
+        RealCharacter.Parent = workspace
+        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        FakeCharacter:Destroy()
+        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        isToggled = false
+    else
+        RealCharacterStartPosition = RealCharacter.HumanoidRootPart.CFrame
+ RealCharacter.HumanoidRootPart.CFrame = CFrame.new(0, -500, 0)
+
+        FakeCharacter.Parent = workspace
+        FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        isToggled = true
+     end
+    end
+})
 		
 --
 OrionLib:Init()
@@ -487,27 +486,6 @@ Tab:AddTextbox({
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = tonumber(jump)
     end
 })
-
-  --[[ Invisibility
-Tab:AddToggle({
-Name = "Invisible",
-Default = false,
-Callback = function(Value)
-if Value then
-RealCharacter.Parent = workspace
-RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
-
-FakeCharacter:Destroy()
-        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
-    else
-        RealCharacterStartPosition = RealCharacter.HumanoidRootPart.CFrame
-        RealCharacter.HumanoidRootPart.CFrame = CFrame.new(0, -500, 0)
-
-        FakeCharacter.Parent = workspace
-        FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
-    end
-end
-})]]--
 	
   -- Infinite Jump
 local InfiniteJumpEnabled = false
@@ -532,7 +510,28 @@ Tab:AddButton({
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
   end
 })--]]
-		
+
+  -- Invisibility
+Tab:AddToggle({
+Name = "Invisible",
+Default = false,
+Callback = function(Value)
+if Value then
+RealCharacter.Parent = workspace
+RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+FakeCharacter:Destroy()
+        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+    else
+        RealCharacterStartPosition = RealCharacter.HumanoidRootPart.CFrame
+        RealCharacter.HumanoidRootPart.CFrame = CFrame.new(0, -500, 0)
+
+        FakeCharacter.Parent = workspace
+        FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+    end
+end
+})
+	
 --
 OrionLib:Init()
 --

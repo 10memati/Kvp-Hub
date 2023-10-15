@@ -217,7 +217,7 @@ Tab:AddTextbox({
     end
 })
 
-  -- Invisibility
+  --[[ Invisibility
   
 Tab:AddToggle({
     Name = "Invisible",
@@ -244,7 +244,7 @@ Tab:AddToggle({
         IsToggled = true
      end
     end
-})
+})]]--
 
   -- Infinite Jump
 local InfiniteJumpEnabled = false

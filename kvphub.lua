@@ -532,13 +532,13 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
- -- Fly
+ --[[ Fly
 Tab:AddButton({
     Name = "Fly Gui",
     Callback = function(Value)
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
   end
-})
+})--]]
 		
 --
 OrionLib:Init()

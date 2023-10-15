@@ -16,7 +16,7 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
  Name = "Player"
 })
-
+  
 local GameTab = Window:MakeTab({
     Name = "Game",
     Icon = "rbxassetid://4483345998",

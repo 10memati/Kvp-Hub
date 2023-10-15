@@ -328,7 +328,7 @@ game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
   local Dropdown = TeleportTab:AddDropdown({
 	Name = "Teleport To Player",
 	Default = nil,
-	Options = {"},
+	Options = {},
 	Callback = function(Value)
 		local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
@@ -388,7 +388,7 @@ else
     hata('No such player was found.')
         end
       end
-})--]]
+})
 
 -- Game Sets
   -- Auto Farm | Speed
@@ -449,7 +449,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebir
       end
     end
   end
-})
+})--]]
 	
 -- Player Sets
   -- Speed

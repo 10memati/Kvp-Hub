@@ -273,7 +273,7 @@ Tab:AddToggle({
 OrionLib:Init()
 --
 
--- Legend Of Speed
+--[[ Legend Of Speed
 elseif tostring(game.placeId) == tostring(los) then
 local Window = OrionLib:MakeWindow({Name = "KVP Hub | Legend of Speed ⚡", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
@@ -503,13 +503,13 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
- --[[ Fly
+ -- Fly
 Tab:AddButton({
     Name = "Fly Gui",
     Callback = function(Value)
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
   end
-})--]]
+})--
 
   -- Invisibility
 Tab:AddToggle({
@@ -535,7 +535,7 @@ end
 --
 OrionLib:Init()
 --
-
+--]]
 else
 -- Error
 hata("This game is not supported by Kvp Hub!")

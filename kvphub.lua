@@ -435,6 +435,24 @@ game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEv
 end
 })
 
+  -- Auto Farm | Gem
+GameTab:AddToggle({
+     Name = "Auto Rebirth",
+     Default = false,
+     Callback = function (Value)
+     local toggle = Value
+      if toggle then
+       while true do
+	 local args = {
+    [1] = "rebirthRequest"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebirthEvent"):FireServer(unpack(args))
+      end
+    end
+  end
+})
+	
 -- Player Sets
   -- Speed
 Tab:AddTextbox({

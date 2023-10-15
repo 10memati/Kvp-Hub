@@ -1,6 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
 
-
 local lt2 = "13822889" -- Lumber Tycoon 2
 local lb = "662417684" -- Lucky Blocks
 local los = "3101667897" -- Legend of Speed
@@ -315,7 +314,6 @@ local function UpdateLocation()
 end
 
 game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
---[[
 local players = game.Players:GetPlayers()
     local playerNames = {}
     
@@ -387,7 +385,7 @@ else
     hata('No such player was found.')
         end
       end
-})]]
+})
 	
 -- Player Sets
   -- Speed

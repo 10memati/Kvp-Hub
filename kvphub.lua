@@ -488,7 +488,7 @@ Tab:AddTextbox({
     end
 })
 
-  -- Invisibility
+  --[[ Invisibility
 Tab:AddToggle({
 Name = "Invisible",
 Default = false,
@@ -507,7 +507,7 @@ FakeCharacter:Destroy()
         FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
     end
 end
-})
+})]]--
 	
   -- Infinite Jump
 local InfiniteJumpEnabled = false

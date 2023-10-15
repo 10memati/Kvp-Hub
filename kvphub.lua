@@ -1,10 +1,21 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
+
+
 local lt2 = "13822889" -- Lumber Tycoon 2
 local lb = "662417684" -- Lucky Blocks
 local bee = "1537690962" -- Bee Swarm Simulator
 
+function hata(content)
+    OrionLib:MakeNotification({
+        Name = "Error",
+        Content = content,
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
 -- Lucky Blocks
 if tostring(game.placeId) == tostring(lb) then
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "KVP Hub | ❓ Lucky Blocks Battleground", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
 local Tab = Window:MakeTab({
@@ -37,7 +48,7 @@ local TeleportSection = TeleportTab:AddSection({
     Name = "Teleport"
 })
 
-  
+
 -- Teleport Sets
   -- Teleport Player  
   local Dropdown = TeleportTab:AddDropdown({
@@ -58,12 +69,7 @@ if hedefOyuncu then
     local hedefPozisyon = hedefOyuncu.Character.HumanoidRootPart.CFrame.p
     oyuncu.Character:SetPrimaryPartCFrame(CFrame.new(hedefPozisyon))
 else
-          OrionLib:MakeNotification({
-              Name = "Error",
-              Content = "No such player was found.",
-              Image = "rbxassetid://4483345998",
-              Time = 5
-          })
+          hata('No such player was found.')
         end
         
 	end
@@ -77,7 +83,7 @@ else
         table.insert(playerNames, player.Name)
     end
 
-    Dropdown:Refresh(playerNames, false)
+    Dropdown:Refresh(playerNames, true)
 end
 
 game.Players.PlayerAdded:Connect(function(player)
@@ -89,6 +95,29 @@ game.Players.PlayerRemoving:Connect(function(player)
 end)
 
 UpdatePlayerOptions()
+
+ -- Teleport Area
+TeleportTab:AddButton({
+      Name = "Teleport Timed Blocks"
+      Callback = function(Value)
+        local targetPosition = Vector3.new(-1040.6402587890625, 194.44700622558594, 90.80938720703125)
+
+local player = game.Players.LocalPlayer
+
+if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+    local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+
+    humanoidRootPart.CFrame = CFrame.new(targetPosition)
+else
+    hata('No such player was found.')
+        end
+      end
+})
+
+  -- Location
+TeleportTab:AddLabel("Label")
+TeleportTab:AddParagraph("Paragraph","Paragraph Content")
+
 -- Game Sets
   -- Blocks
 GameTab:AddButton({
@@ -211,7 +240,7 @@ if character then
               Name = "Error",
               Content = "X: " .. x .. " Y: " .. y .. "Z: " .. z,
               Image = "rbxassetid://4483345998",
-              Time = 5
+              Time = 10
           })
     else
         print("HumanoidRootPart bulunamadı.")
@@ -223,57 +252,10 @@ else
   	end    
 })
 
-  
---[[
-	--All Server Players
-local players = game:GetService("Players"):GetPlayers()
-local playerNames = {}
-
-for _, player in pairs(players) do
-    table.insert(playerNames, player.Name)
-end
---]]
-
-  -- Tp Tool
-Tab:AddButton({
-	Name = "Tp Tool",
-	Callback = function()
-      		mouse = game.Players.LocalPlayer:GetMouse()
-tool = Instance.new("Tool")
-tool.RequiresHandle = false
-tool.Name = "Tp Tool (Click)"
-tool.Activated:connect(function()
-local pos = mouse.Hit+Vector3.new(0,2.5,0)
-pos = CFrame.new(pos.X,pos.Y,pos.Z)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
-end)
-tool.Parent = game.Players.LocalPlayer.Backpack
-  	end    
-})
-	
---[[
-local Noclip = true
-local ToggleNoclip = false
-Tab:AddToggle({
-    Name = "Noclip Toggle",
-    default = false,
-    Callback = function(Value)
-        ToggleNoclip = Value
-    end
-})
---]]
-
-  -- Esp
-Tab:AddButton({
-    Name = "ESP",
-    Callback = function(Value)
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/esp.lua'))()
-    end
-})
-
 --
 OrionLib:Init()
-elseif tostring(game.placeId) == tostring(psx) then
+--
+elseif tostring(game.placeId) == tostring(bee) then
    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "KVP Hub | Bee Swarm Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 

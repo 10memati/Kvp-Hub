@@ -233,40 +233,18 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
-
-  Tab:AddButton({
-	Name = "Konum",
-	Callback = function()
-local player = game.Players.LocalPlayer -- Oyuncunun nesnesini alır
-local character = player.Character -- Oyuncunun karakter nesnesini alır
-
-if character then
-    local rootPart = character:FindFirstChild("HumanoidRootPart") -- Karakterin HumanoidRootPart nesnesini arar
-
-    if rootPart then
-        local position = rootPart.Position
-        local x, y, z = position.X, position.Y, position.Z
-        OrionLib:MakeNotification({
-              Name = "Error",
-              Content = "X: " .. x .. " Y: " .. y .. "Z: " .. z,
-              Image = "rbxassetid://4483345998",
-              Time = 10
-          })
-    else
-        print("HumanoidRootPart bulunamadı.")
-    end
-else
-    print("Karakter bulunamadı.")
-        end
-        
-  	end    
+  -- Fly
+Tab:AddButton({
+    Name = "Fly Menu",
+    Callback = function(Value)
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
 })
-
 --
 OrionLib:Init()
 --
+
 elseif tostring(game.placeId) == tostring(bee) then
-   local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
+-- Bee Swarm Simulator
 local Window = OrionLib:MakeWindow({Name = "KVP Hub | Bee Swarm Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
 local Tab = Window:MakeTab({
@@ -307,12 +285,7 @@ Tab:AddTextbox({
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(hiz)
 end
 })
--- Fly
-	Tab:AddButton({
-    Name = "Fly Menu",
-    Callback = function(Value)
-    loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
-})
+	
   -- Jump Power
 Tab:AddTextbox({
     Name = "Jump Power",

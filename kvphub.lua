@@ -57,7 +57,7 @@ local function FormatLocation(position)
     local x = math.floor(position.X)
     local y = math.floor(position.Y)
     local z = math.floor(position.Z)
-    return string.format("X=%d, Y=%d, Z=%d", x, y, z)
+    return string.format("%d, %d, %d", x, y, z)
 end
 
 local function UpdateLocation()
@@ -301,7 +301,7 @@ local function FormatLocation(position)
     local x = math.floor(position.X)
     local y = math.floor(position.Y)
     local z = math.floor(position.Z)
-    return string.format("X=%d, Y=%d, Z=%d", x, y, z)
+    return string.format("%d, %d, %d", x, y, z)
 end
 
 local function UpdateLocation()

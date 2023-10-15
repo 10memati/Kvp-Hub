@@ -361,7 +361,7 @@ else
       end
 })
 
--- Game Sets
+--[[ Game Sets
   -- Auto Farm | Speed
 GameTab:AddToggle({
      Name = "Auto Speed Farm",
@@ -420,7 +420,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebir
       end
     end
   end
-})
+})--]]
 	
 -- Player Sets
   -- Speed

@@ -3,7 +3,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10m
 
 local lt2 = "13822889" -- Lumber Tycoon 2
 local lb = "662417684" -- Lucky Blocks
-local bee = "1537690962" -- Bee Swarm Simulator
+local los = "3101667897" -- Legend of Speed
 
 function hata(content)
     OrionLib:MakeNotification({
@@ -219,11 +219,9 @@ Tab:AddTextbox({
 
   -- Invisibility
 	
-        -- Ayarlar
+ -- Ayarlar
 local Transparency = true
 local NoClip = false
-
-
   
 Tab:AddToggle({
     Name = "Invisible",
@@ -278,9 +276,9 @@ Tab:AddButton({
 OrionLib:Init()
 --
 
-elseif tostring(game.placeId) == tostring(bee) then
--- Bee Swarm Simulator
-local Window = OrionLib:MakeWindow({Name = "KVP Hub | Bee Swarm Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
+-- Legend Of Speed
+elseif tostring(game.placeId) == tostring(los) then
+local Window = OrionLib:MakeWindow({Name = "KVP Hub | Legend of Speed ⚡", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
 local Tab = Window:MakeTab({
 	Name = "Player",
@@ -291,7 +289,7 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
  Name = "Player"
 })
-
+  
 local GameTab = Window:MakeTab({
     Name = "Game",
     Icon = "rbxassetid://4483345998",
@@ -302,7 +300,100 @@ local GameSection = GameTab:AddSection({
     Name = "Game"
 })
 
-  -- Player Sets
+local TeleportTab = Window:MakeTab({
+    Name = "Teleport",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local TeleportSection = TeleportTab:AddSection({
+    Name = "Teleport"
+})
+
+
+-- Teleport Sets
+  -- Location
+  local LocationParagraph = TeleportTab:AddParagraph("Location", "")
+
+local function UpdateLocation()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+        local position = humanoidRootPart.Position
+        LocationParagraph:Set("Location: X=" .. position.X .. " Y=" .. position.Y .. " Z=" .. position.Z)
+    end
+end
+
+game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
+
+  -- Teleport Player  
+  local Dropdown = TeleportTab:AddDropdown({
+	Name = "Teleport To Player",
+	Default = nil,
+	Options = {},
+	Callback = function(Value)
+		local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+
+local hedefOyuncuAdi = Value
+
+local oyuncu = game.Players.LocalPlayer
+
+local hedefOyuncu = Players:FindFirstChild(hedefOyuncuAdi)
+
+if hedefOyuncu then
+    local hedefPozisyon = hedefOyuncu.Character.HumanoidRootPart.CFrame.p
+    oyuncu.Character:SetPrimaryPartCFrame(CFrame.new(hedefPozisyon))
+else
+          hata('No such player was found.')
+        end
+        
+	end
+})
+
+  local function UpdatePlayerOptions()
+    local players = game.Players:GetPlayers()
+    local playerNames = {}
+    
+    for _, player in pairs(players) do
+        table.insert(playerNames, player.Name)
+    end
+
+    Dropdown:Refresh(playerNames, true)
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    UpdatePlayerOptions()
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+    UpdatePlayerOptions()
+end)
+
+UpdatePlayerOptions()
+
+ -- Teleport Area
+TeleportTab:AddButton({
+      Name = "Teleport ",
+      Callback = function(Value)
+        local targetPosition = Vector3.new()
+
+local player = game.Players.LocalPlayer
+
+if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+    local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+
+    humanoidRootPart.CFrame = CFrame.new(targetPosition)
+else
+    hata('No such player was found.')
+        end
+      end
+})
+
+-- Game Sets
+  
+
+-- Player Sets
   -- Speed
 Tab:AddTextbox({
     Name = "Speed",
@@ -320,7 +411,7 @@ Tab:AddTextbox({
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(hiz)
 end
 })
-	
+
   -- Jump Power
 Tab:AddTextbox({
     Name = "Jump Power",
@@ -336,6 +427,36 @@ Tab:AddTextbox({
 	Value = jump
         
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = tonumber(jump)
+    end
+})
+
+  -- Invisibility
+ -- Ayarlar
+local Transparency = true
+local NoClip = false
+  
+Tab:AddToggle({
+    Name = "Invisible",
+    Default = false,
+    Callback = function(Value)
+	local isToggled = Value
+      if IsToggled then
+        RealCharacter.Parent = workspace
+        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        FakeCharacter:Destroy()
+        RealCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        IsToggled = false
+    else
+        RealCharacterStartPosition = RealCharacter.HumanoidRootPart.CFrame
+ RealCharacter.HumanoidRootPart.CFrame = CFrame.new(0, -500, 0)
+
+        FakeCharacter.Parent = workspace
+        FakeCharacter.HumanoidRootPart.CFrame = RealCharacterStartPosition
+
+        IsToggled = true
+     end
     end
 })
 
@@ -355,23 +476,19 @@ game:GetService("UserInputService").JumpRequest:Connect(function()
     end
 end)
 
---[[
-	--All Server Players
-local players = game:GetService("Players"):GetPlayers()
-local playerNames = {}
-
-for _, player in pairs(players) do
-    table.insert(playerNames, player.Name)
-end
---]]
-
+ -- Fly
+Tab:AddButton({
+    Name = "Fly Gui",
+    Callback = function(Value)
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
+  end
+})
+		
 --
 OrionLib:Init()
+--
+
 else
 -- Error
-game:GetService("StarterGui"):SetCore("SendNotification",{
-	Title = 'Error', -- Required
-	Text = "This game is not supported by Kvp-Hub!", -- Required
-	Icon = "rbxassetid://1234567890" -- Optional
-})
+hata("This game is not supported by Kvp Hub!")
 end

@@ -122,7 +122,7 @@ game.Players.PlayerRemoving:Connect(function(player)
     UpdatePlayerOptions()
 end)
 
- --[[ Teleport Area
+  -- Teleport Area
 TeleportTab:AddButton({
       Name = "Teleport Timed Blocks",
       Callback = function(Value)
@@ -138,7 +138,7 @@ else
     hata('No such player was found.')
         end
       end
-})]]
+})
 
 -- Game Sets
   -- Blocks
@@ -451,7 +451,7 @@ Tab:AddButton({
 --
 OrionLib:Init()
 --
---
+
 else
 -- Error
 hata("This game is not supported by Kvp Hub!")

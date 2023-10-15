@@ -420,7 +420,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebir
       end
     end
   end
-})--]]
+})]]
 	
 -- Player Sets
   -- Speed

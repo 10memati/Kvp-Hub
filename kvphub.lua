@@ -307,7 +307,12 @@ Tab:AddTextbox({
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(hiz)
 end
 })
-
+-- Fly
+	Tab:AddButton({
+    Name = "Fly Menu",
+    Callback = function(Value)
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Kvp-Hub/main/fly.lua')))()
+})
   -- Jump Power
 Tab:AddTextbox({
     Name = "Jump Power",

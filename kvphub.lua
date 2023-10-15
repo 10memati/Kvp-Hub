@@ -373,8 +373,10 @@ end)
 UpdatePlayerOptions()
 
  -- Teleport Area
-TeleportTab:AddButton({
-      Name = "Teleport ",
+TeleportTab:AddDropdown({
+      Name = "Teleport Area",
+      Default = nil,
+      Options = {}
       Callback = function(Value)
         local targetPosition = Vector3.new()
 
@@ -391,7 +393,45 @@ else
 })
 
 -- Game Sets
-  
+  -- Auto Farm | Speed
+GameTab:AddToggle({
+     Name = "Auto Speed Farm",
+     Default = false,
+     Callback = function (Value)
+	local toggle = Value
+  if toggle then
+ while true do
+    local args = {
+    [1] = "collectOrb",
+    [2] = "Red Orb",
+    [3] = "Magma City"
+  }
+
+game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
+      wait(2.3)
+    end
+end
+})
+
+  -- Auto Farm | Gem
+GameTab:AddToggle({
+     Name = "Auto Gem Farm",
+     Default = false,
+     Callback = function (Value)
+	local toggle = Value
+  if toggle then
+ while true do
+    local args = {
+    [1] = "collectOrb",
+    [2] = "Gem",
+    [3] = "Magma City"
+  }
+
+game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
+      wait(2.3)
+    end
+end
+})
 
 -- Player Sets
   -- Speed
@@ -431,14 +471,12 @@ Tab:AddTextbox({
 })
 
   -- Invisibility
- -- Ayarlar
-local Transparency = true
-local NoClip = false
-  
 Tab:AddToggle({
     Name = "Invisible",
     Default = false,
     Callback = function(Value)
+    local Transparency = true
+    local NoClip = false
 	local isToggled = Value
       if IsToggled then
         RealCharacter.Parent = workspace

@@ -447,7 +447,7 @@ local locations = {
 
 TeleportTab:AddDropdown({
     Name = "Teleport Area",
-    Default = "City",
+    Default = nil,
     Options = {"City", "Magma City"},
     Callback = function(Value)
         local targetPosition = locations[Value]

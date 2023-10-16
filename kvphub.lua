@@ -398,15 +398,17 @@ GameTab:AddToggle({
 	local toggle = Value
   if toggle then
  while true do
+	for i = 1, 1000 do			
     local args = {
     [1] = "collectOrb",
     [2] = "Red Orb",
-    [3] = "Magma City"
+    [3] = "City"
   }
 
 game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
-      wait(3)
+      wait(10)
     end
+   end
   end
 end
 })

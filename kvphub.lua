@@ -467,14 +467,11 @@ TeleportTab:AddDropdown({
 })
 
 -- Game Sets
-  -- Auto Farm | Speed
-GameTab:AddToggle({
-     Name = "Auto Speed Farm",
-     Default = false,
-     Callback = function (Value)
-	local toggle = Value
-  if toggle then
- while true do
+  -- Add | Speed
+GameTab:AddButton({
+     Name = "Add Speed",
+     Callback = function ()
+ for i = 1, 10 do
 	for i = 1, 1000 do			
     local args = {
     [1] = "collectOrb",
@@ -483,21 +480,16 @@ GameTab:AddToggle({
   }
 
 game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
-      wait(5)
     end
    end
-  end
 end
 })
 
-  -- Auto Farm | Gem
-GameTab:AddToggle({
-     Name = "Auto Gem Farm",
-     Default = false,
-     Callback = function (Value)
-	local toggle = Value
-  if toggle then
- while true do
+  -- Add | Gem
+GameTab:AddButton({
+     Name = "Add Gem",
+     Callback = function ()
+ for i = 1, 10 do
   for i = 1, 1000 do			
     local args = {
     [1] = "collectOrb",
@@ -506,14 +498,12 @@ GameTab:AddToggle({
   }
 
 game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
-      wait(5)
     end
-   end
    end
 end
 })
 
-  -- Auto Farm | Gem
+  -- Auto Rebirth
 GameTab:AddToggle({
      Name = "Auto Rebirth",
      Default = false,

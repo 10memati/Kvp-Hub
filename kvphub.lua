@@ -47,6 +47,15 @@ local TeleportSection = TeleportTab:AddSection({
     Name = "Teleport"
 })
 
+local SettTab = Window:MakeTab({
+    Name = "Settings",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local SettSection = SettTab:AddSection({
+    Name = "Settings"
+})
 
 -- Teleport Sets
   -- Location

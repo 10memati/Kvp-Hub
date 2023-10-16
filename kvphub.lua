@@ -60,12 +60,12 @@ local SettSection = SettTab:AddSection({
 -- Settings
    -- Reload
 SettTab:AddButton({
-    Name = "Reload",
+    Name = "Rejoin",
     Callback = function()
      local player = game.Players.LocalPlayer
     if player then
-       player:Kick()
-       wait(2)
+       player:Kick("Rejoin By Kvp HUB")
+       wait(1.3)
        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, player)
     else
        hata("No such player was found.")

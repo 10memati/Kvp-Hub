@@ -63,16 +63,25 @@ SettTab:AddButton({
     Name = "Rejoin",
     Callback = function()
      local player = game.Players.LocalPlayer
-    if player then
-       player:Kick("Rejoin By KVP Hub")
-       wait(1.3)
-       game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, player)
-    else
-       hata("No such player was found.")
-     end
+if player then
+    local placeId = game.PlaceId
+    local jobId = game.JobId
+
+    player:Kick()
+    wait(0.1)
+
+    local success, errorMessage = pcall(function()
+        game:GetService("TeleportService"):TeleportToPlaceInstance(placeId, jobId, player)
+    end)
+
+    if not success then
+        warn("Hata oluştu: " .. errorMessage)
+    end
+else
+    warn("Oyuncu bulunamadı.")
+				end
   end
 })
-				
 
 -- Teleport Sets
   -- Location
@@ -335,16 +344,25 @@ SettTab:AddButton({
     Name = "Rejoin",
     Callback = function()
      local player = game.Players.LocalPlayer
-    if player then
-       player:Kick("Rejoin By KVP Hub")
-       wait(1.3)
-       game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, player)
-    else
-       hata("No such player was found.")
-     end
+if player then
+    local placeId = game.PlaceId
+    local jobId = game.JobId
+
+    player:Kick()
+    wait(0.1)
+
+    local success, errorMessage = pcall(function()
+        game:GetService("TeleportService"):TeleportToPlaceInstance(placeId, jobId, player)
+    end)
+
+    if not success then
+        warn("Hata oluştu: " .. errorMessage)
+    end
+else
+    warn("Oyuncu bulunamadı.")
+				end
   end
 })
-
 
 -- Teleport Sets
   -- Location

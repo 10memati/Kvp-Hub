@@ -369,25 +369,32 @@ end)
 
 UpdatePlayerOptions()
 
- --[[ Teleport Area
+ -- Teleport Area
+local locations = {
+    City = Vector3.new(-559, 4, 423),
+    ["Magma City"] = Vector3.new(1616, 4, 4330)
+}
+
 TeleportTab:AddDropdown({
-      Name = "Teleport Area",
-      Default = "City",
-      Options = {"City"}
-      Callback = function(Value)
-        local targetPosition = Vector3.new()
+    Name = "Teleport Area",
+    Default = "City",
+    Options = {"City", "Magma City"},
+    Callback = function(Value)
+        local targetPosition = locations[Value]
 
-local player = game.Players.LocalPlayer
-
-if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-    local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
-
-    humanoidRootPart.CFrame = CFrame.new(targetPosition)
-else
-    hata('No such player was found.')
+        if targetPosition then
+            local player = game.Players.LocalPlayer
+            if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+                humanoidRootPart.CFrame = CFrame.new(targetPosition)
+            else
+                hata('No such player was found.')
+            end
+        else
+            hata("Location not defined for " .. Value)
         end
-      end
-})]]
+    end
+})
 
 -- Game Sets
   -- Auto Farm | Speed

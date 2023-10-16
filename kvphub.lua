@@ -443,7 +443,10 @@ local locations = {
     City = Vector3.new(-559, 4, 423),
     ["Magma City"] = Vector3.new(1616, 4, 4330),
     ["Mysterious Cave"] = Vector3.new(-9684, 59, 3136),
-    ["Snow City"] = Vector3.new(-867, 4, 2165)
+    ["Snow City"] = Vector3.new(-867, 4, 2165),
+    ["Inferno Cave"] = Vector3.new(-11054, 217, -4857),
+    ["Electro Cave"] = Vector3.new(-13098, 217, 5866),
+    ["Legends Highway"] = Vector3.new(3678, 71, 5592)
 }
 
 TeleportTab:AddDropdown({

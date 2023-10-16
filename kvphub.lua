@@ -57,6 +57,23 @@ local SettSection = SettTab:AddSection({
     Name = "Settings"
 })
 
+-- Settings
+   -- Reload
+SettTab:AddButton({
+    Name = "Reload",
+    Callback = function()
+     local player = game.Players.LocalPlayer
+    if player then
+       player:Kick()
+       wait(2)
+       game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, player)
+    else
+       hata("No such player was found.")
+     end
+  end
+})
+				
+
 -- Teleport Sets
   -- Location
   local LocationParagraph = TeleportTab:AddParagraph("Location", "")
@@ -300,6 +317,32 @@ local TeleportTab = Window:MakeTab({
 
 local TeleportSection = TeleportTab:AddSection({
     Name = "Teleport"
+})
+
+local SettTab = Window:MakeTab({
+    Name = "Settings",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local SettSection = SettTab:AddSection({
+    Name = "Settings"
+})
+
+-- Settings
+   -- Reload
+SettTab:AddButton({
+    Name = "Reload",
+    Callback = function()
+     local player = game.Players.LocalPlayer
+    if player then
+       player:Kick()
+       wait(2)
+       game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, player)
+    else
+       hata("No such player was found.")
+     end
+  end
 })
 
 

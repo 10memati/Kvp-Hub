@@ -452,7 +452,7 @@ local locations = {
 TeleportTab:AddDropdown({
     Name = "Teleport Area",
     Default = nil,
-    Options = {"City", "Snow City", "Mysterious Cave", "Magma City"},
+    Options = {"City", "Snow City", "Mysterious Cave", "Magma City", "Inferno Cave", "Electro Cave", "Legends Highway"},
     Callback = function(Value)
         local targetPosition = locations[Value]
 

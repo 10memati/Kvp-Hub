@@ -405,7 +405,7 @@ GameTab:AddToggle({
   }
 
 game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
-      wait(2.3)
+      wait(3)
     end
   end
 end
@@ -426,7 +426,7 @@ GameTab:AddToggle({
   }
 
 game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("orbEvent"):FireServer(unpack(args))
-      wait(2.3)
+      wait(3)
       end
    end
 end
@@ -445,6 +445,7 @@ GameTab:AddToggle({
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebirthEvent"):FireServer(unpack(args))
+	wait(3)
       end
     end
   end

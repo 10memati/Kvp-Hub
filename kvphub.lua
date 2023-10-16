@@ -1,5 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
 
+local placeName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+
 local lt2 = "13822889" -- Lumber Tycoon 2
 local lb = "662417684" -- Lucky Blocks
 local los = "3101667897" -- Legend of Speed
@@ -13,9 +15,10 @@ function hata(content)
     })
 end
 
+local Window = OrionLib:MakeWindow({Name = "KVP Hub | " .. placeName, HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
+
 -- Lucky Blocks
 if tostring(game.placeId) == tostring(lb) then
-local Window = OrionLib:MakeWindow({Name = "KVP Hub | ❓ Lucky Blocks Battleground", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
 
 local Tab = Window:MakeTab({
 	Name = "Player",
@@ -294,10 +297,6 @@ OrionLib:Init()
 
 -- Legend Of Speed
 elseif tostring(game.placeId) == tostring(los) then
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/10memati/Orion/main/source')))()
-
-local Window = OrionLib:MakeWindow({Name = "KVP Hub | Legend of Speed ⚡", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
-
 local Tab = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",

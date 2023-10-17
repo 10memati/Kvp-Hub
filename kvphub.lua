@@ -758,7 +758,7 @@ TeleportTab:AddDropdown({
 })
 
 -- Game Sets
-Tab:AddToggle({
+GameTab:AddToggle({
     Name = "Auto Click",
     Default = false,
     Callback = function(Value) 

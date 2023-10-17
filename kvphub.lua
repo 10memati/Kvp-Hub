@@ -758,7 +758,24 @@ TeleportTab:AddDropdown({
 })
 
 -- Game Sets
+Tab:AddToggle({
+    Name = "Auto Click",
+    Default = false,
+    Callback = function(Value) 
+local toggle = Value
 
+  if toggle then
+    while true do	
+      local args = {
+           [1] = "swingKatana"
+           }
+
+            game:GetService("Players").LocalPlayer:WaitForChild("ninjaEvent"):FireServer(unpack(args))
+           wait(1)
+		end
+	end
+end
+})
 	
 -- Player Sets
   -- Speed

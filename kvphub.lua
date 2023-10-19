@@ -519,7 +519,7 @@ GameTab:AddToggle({
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("rebirthEvent"):FireServer(unpack(args))
-	wait(3)
+	wait(1)
       end
     end
   end

@@ -843,6 +843,38 @@ OrionLib:Init()
 --
 
 else 
+	local Window = OrionLib:MakeWindow({Name = "KVP Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "KVP Hub"})
+local Tab = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+	local section = Tab:AddSection({
+			Name = "Sjs"
+		})
+
+	  local LocationParagraph = Tab:AddParagraph("Location", "")
+
+local function FormatLocation(position)
+    local x = math.floor(position.X)
+    local y = math.floor(position.Y)
+    local z = math.floor(position.Z)
+    return string.format("%d, %d, %d", x, y, z)
+end
+
+local function UpdateLocation()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+        local position = humanoidRootPart.Position
+        local formattedLocation = FormatLocation(position)
+        LocationParagraph:Set("Location: " .. formattedLocation)
+    end
+end
+
+game:GetService("RunService").Heartbeat:Connect(UpdateLocation)
+	
 -- Error
-hata("This game is not supported by Kvp Hub!")
+-- hata("This game is not supported by Kvp Hub!")
 end

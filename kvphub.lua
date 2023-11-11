@@ -289,6 +289,39 @@ Tab:AddButton({
   end
 })
 
+Tab:AddToggle({
+     Name = "Noclip",
+     Defult = false,
+     Callback = function(Value)
+local Workspace = game:GetService("Workspace")
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+local Plr = Players.LocalPlayer
+local Clipon = false
+local Status = Value
+
+if Status == false then
+		Clipon = true
+                Status = false
+		Stepped = game:GetService("RunService").Stepped:Connect(function()
+			if not Clipon == false then
+				for a, b in pairs(Workspace:GetChildren()) do
+                if b.Name == Plr.Name then
+                for i, v in pairs(Workspace[Plr.Name]:GetChildren()) do
+                if v:IsA("BasePart") then
+                v.CanCollide = false
+                end end end end
+			else
+				Stepped:Disconnect()
+			end
+		end)
+	elseif Status == true then
+		Clipon = false
+                Status = false
+      end
+  end
+})
+
 --
 OrionLib:Init()
 --

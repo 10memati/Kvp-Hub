@@ -3,8 +3,6 @@ local lb = "662417684" -- Lucky Blocks
 local los = "3101667897" -- Legend of Speed
 local lt2 = "13822889" -- Lumber Tycoon 2
 
-print("Game Place ID:", game.PlaceId)
-
-if tonumber(game.PlaceId) == tonumber(nl) then
+if tostring(game.PlaceId) == tostring(lb) then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/10memati/Kvp-Hub/main/games/lucky-blocks.lua"))()
 end

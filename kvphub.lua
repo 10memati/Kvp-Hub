@@ -3,4 +3,5 @@ local lb = 662417684 -- Lucky Blocks
 local los = 3101667897 -- Legend of Speed
 
 if game.placeId == nl then
-	loadstring(game:HttpGet("
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/10memati/Kvp-Hub/main/games/lucky-blocks.lua"))()
+end

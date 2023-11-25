@@ -5,6 +5,6 @@ local lt2 = "13822889" -- Lumber Tycoon 2
 
 if tostring(game.PlaceId) == tostring(lb) then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/10memati/Kvp-Hub/main/games/lucky-blocks.lua"))()
-else if tostring(game.PlaceId) == tostring(los) then
+elseif tostring(game.PlaceId) == tostring(los) then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/10memati/Kvp-Hub/main/games/legendsofspeed.lua"))()
 end

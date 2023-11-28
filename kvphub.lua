@@ -29,5 +29,5 @@ elseif tostring(game.PlaceId) == tostring(los) then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/10memati/Kvp-Hub/main/games/legendsofspeed.lua"))()
     ok('Successfully loaded for Legends of Speed!')
 else
-    hata('This game is not supported!')
+    hata('This game is not supported by KVP Hub!')
 end
